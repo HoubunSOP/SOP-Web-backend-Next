@@ -1,0 +1,5 @@
+fastapi~=0.110.2
+pydantic~=2.7.0
+beautifulsoup4~=4.12.3
+requests~=2.31.0
+bilibili-api-python ~=16.2.0

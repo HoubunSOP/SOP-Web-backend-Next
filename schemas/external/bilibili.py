@@ -26,10 +26,3 @@ class CVData(BaseModel):
     pn: int
     ps: int
     count: int
-
-
-class CVList(BaseModel):
-    code: int
-    message: str
-    ttl: int
-    data: CVData
