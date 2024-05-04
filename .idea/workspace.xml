@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d84f271-21ec-4f2e-9f51-96510c1eb613" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/biliCV/content.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/settings.local.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/settings.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/crawler/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/crawler/sample/comic_1668.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/crawler/sample/magazine_903.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/external/bilibili.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/external/bilibili.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/biliCV/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/biliCV/list.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,18 +34,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "misaka10843"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;misaka10843&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/HoubunSOP/SOP-Web-backend-Next.git",
-    "accountId": "82de0384-13c8-484a-8502-677afaebb044"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/HoubunSOP/SOP-Web-backend-Next.git&quot;,
+    &quot;accountId&quot;: &quot;82de0384-13c8-484a-8502-677afaebb044&quot;
   }
-}]]></component>
+}</component>
   <component name="HttpClientSelectedEnvironments">
     <file url="file://$USER_HOME$/AppData/Local/Temp/whats-new-dir/whats-new.http" environment="test" />
   </component>
@@ -62,6 +67,7 @@
     "HTTP 请求.whats-new | HTTP/2 Support.executor": "Run",
     "Python.list.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/tests/biliCV",
@@ -70,8 +76,13 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "http.proxy",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -79,6 +90,7 @@
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\tests\biliCV" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\tests\crawler\sample" />
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
     </key>
   </component>
@@ -153,7 +165,9 @@
       <option name="presentableId" value="Default" />
       <updated>1713693473773</updated>
       <workItem from="1713693475176" duration="660000" />
-      <workItem from="1713694148941" duration="14702000" />
+      <workItem from="1713694148941" duration="14814000" />
+      <workItem from="1713770468093" duration="3990000" />
+      <workItem from="1713779285104" duration="9487000" />
     </task>
     <servers />
   </component>
