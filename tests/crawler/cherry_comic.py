@@ -40,6 +40,19 @@ def extract_comic_info(url):
 
     detail_table = soup.find("table", id="status_table")
 
+    # 找到标有"詳細"的行
+    row = None
+    for tr in detail_table.find_all('tr'):
+        if tr.th is not None and '詳細' in tr.th.text:
+            row = tr
+            break
+
+    # 从找到的行中提取URL
+    kirara_src = None
+    if row is not None:
+        url_cell = row.find('td', class_='status_data')
+        if url_cell is not None:
+            kirara_src = url_cell.find('a')['href']
     # 找到标有"書影"的行
     row = None
     for tr in detail_table.find_all('tr'):
@@ -54,13 +67,14 @@ def extract_comic_info(url):
         if url_cell is not None:
             img_kirara_src = url_cell.find('a')['href']
 
-    return comic_description, extracted_data, img_src, img_kirara_src
+    return comic_description, extracted_data, img_src, img_kirara_src, kirara_src
 
 
-url = "http://localhost/Tool/laragon/www/krr/comics_detail/1007.html"  # 将此 URL 替换为您要提取内容的网页 URL
-comic_description, extracted_data, img_src, img_kirara_src = extract_comic_info(url)
+url = "http://localhost/krr/comics_detail/1944.html"  # 将此 URL 替换为您要提取内容的网页 URL
+comic_description, extracted_data, img_src, img_kirara_src, kirara_src = extract_comic_info(url)
 
 print("Comic Description:", comic_description)
 print("Extracted Data:", extracted_data)
 print("Image Source URL:", img_src)
 print("Image Kirara Source URL:", img_kirara_src)
+print("Kirara URL:", kirara_src)

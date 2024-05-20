@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d84f271-21ec-4f2e-9f51-96510c1eb613" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,31 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP 请求.test_main | #1.executor": "Run",
-    "HTTP 请求.whats-new | Dynamic variables in scripts.executor": "Run",
-    "HTTP 请求.whats-new | HTTP/2 Support.executor": "Run",
-    "Python.list.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/tests/biliCV",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP 请求.test_main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP 请求.whats-new | Dynamic variables in scripts.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP 请求.whats-new | HTTP/2 Support.executor&quot;: &quot;Run&quot;,
+    &quot;Python.list.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/tests/biliCV&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\tests\biliCV" />
@@ -163,6 +161,7 @@
       <workItem from="1713779285104" duration="9487000" />
       <workItem from="1716093878404" duration="1882000" />
       <workItem from="1716102769348" duration="7279000" />
+      <workItem from="1716185812279" duration="1784000" />
     </task>
     <servers />
   </component>
