@@ -70,7 +70,7 @@ def extract_comic_info(url):
     return comic_description, extracted_data, img_src, img_kirara_src, kirara_src
 
 
-url = "http://localhost/krr/comics_detail/1944.html"  # 将此 URL 替换为您要提取内容的网页 URL
+url = "http://192.168.33.128:3000/comics_detail/1944.html"  # 将此 URL 替换为您要提取内容的网页 URL
 comic_description, extracted_data, img_src, img_kirara_src, kirara_src = extract_comic_info(url)
 
 print("Comic Description:", comic_description)

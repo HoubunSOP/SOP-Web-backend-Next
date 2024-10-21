@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d84f271-21ec-4f2e-9f51-96510c1eb613" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpClient.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/biliCV/content.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/biliCV/content.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,31 +57,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP 请求.test_main | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP 请求.whats-new | Dynamic variables in scripts.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP 请求.whats-new | HTTP/2 Support.executor&quot;: &quot;Run&quot;,
-    &quot;Python.list.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/tests/biliCV&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "FastAPI.SOP-Web-backend-Next.executor": "Run",
+    "HTTP 请求.test_main | #1.executor": "Run",
+    "HTTP 请求.whats-new | Dynamic variables in scripts.executor": "Run",
+    "HTTP 请求.whats-new | HTTP/2 Support.executor": "Run",
+    "Python.cherry_comic.executor": "Run",
+    "Python.content.executor": "Run",
+    "Python.list.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\tests\biliCV" />
@@ -85,8 +99,31 @@
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.list">
+  <component name="RunManager" selected="FastAPI.SOP-Web-backend-Next">
     <configuration name="test_main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" requestIdentifier="#1" runType="运行单个请求">
+      <method v="2" />
+    </configuration>
+    <configuration name="content" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP-Web-backend-Next" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/biliCV" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/biliCV/content.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="list" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -113,12 +150,14 @@
       <method v="2" />
     </configuration>
     <configuration name="SOP-Web-backend-Next" type="Python.FastAPI">
+      <option name="additionalOptions" value="--host 0.0.0.0 --reload" />
       <option name="file" value="$PROJECT_DIR$/main.py" />
       <module name="SOP-Web-backend-Next" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/home/misaka10843/.virtualenvs/SOP-Web-backend-Next/bin/python" />
+      <option name="SDK_NAME" value="Remote Python 3.10.12 (sftp://misaka10843@192.168.33.128:22/home/misaka10843/.virtualenvs/SOP-Web-backend-Next/bin/python)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -130,10 +169,12 @@
     <list>
       <item itemvalue="FastAPI.SOP-Web-backend-Next" />
       <item itemvalue="HTTP 请求.test_main | #1" />
+      <item itemvalue="Python.content" />
       <item itemvalue="Python.list" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.content" />
         <item itemvalue="Python.list" />
         <item itemvalue="HTTP 请求.test_main | #1" />
       </list>
@@ -142,8 +183,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
-        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
       </set>
     </attachedChunks>
   </component>
@@ -162,6 +203,7 @@
       <workItem from="1716093878404" duration="1882000" />
       <workItem from="1716102769348" duration="7279000" />
       <workItem from="1716185812279" duration="1784000" />
+      <workItem from="1729473793083" duration="10765000" />
     </task>
     <servers />
   </component>
@@ -169,6 +211,9 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$list.coverage" NAME="list 覆盖结果" MODIFIED="1713701820370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/biliCV" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$SOP_Web_backend_Next.coverage" NAME="SOP-Web-backend-Next 覆盖结果" MODIFIED="1729477487942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$list.coverage" NAME="list 覆盖结果" MODIFIED="1729475396248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/biliCV" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$cherry_comic.coverage" NAME="cherry_comic 覆盖结果" MODIFIED="1729475262707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/crawler" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$content.coverage" NAME="content 覆盖结果" MODIFIED="1729475434298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/biliCV" />
   </component>
 </project>

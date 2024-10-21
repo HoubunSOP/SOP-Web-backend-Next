@@ -25,6 +25,7 @@ async def main():
     # 写入 markdown
     with open('article.temp.html', 'w', encoding='utf8') as f:
         f.write(str(document))
+    return str(document)
 
 
 if __name__ == "__main__":
