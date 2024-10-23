@@ -1,4 +1,12 @@
 ```mysql
+-- 创建comic_authors表
+CREATE TABLE comic_authors
+(
+    id       INT          NOT NULL AUTO_INCREMENT COMMENT '漫画作者唯一标识',
+    name     VARCHAR(255) NOT NULL COMMENT '漫画作者名称',
+    PRIMARY KEY (id)
+);
+
 -- 创建comics表
 CREATE TABLE comics
 (
@@ -11,14 +19,6 @@ CREATE TABLE comics
     auto       BOOLEAN      NOT NULL DEFAULT FALSE COMMENT '是否为自动生成',
     PRIMARY KEY (id),
     FOREIGN KEY (author_id) REFERENCES comic_authors(id) ON DELETE CASCADE
-);
-
--- 创建comic_authors表
-CREATE TABLE comic_authors
-(
-    id       INT          NOT NULL AUTO_INCREMENT COMMENT '漫画作者唯一标识',
-    name     VARCHAR(255) NOT NULL COMMENT '漫画作者名称',
-    PRIMARY KEY (id)
 );
 
 -- 创建users表
