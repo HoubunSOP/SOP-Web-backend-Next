@@ -13,13 +13,14 @@ from schemas.list import (
 
 router = APIRouter()
 
+
 @router.get("/list/{resource_type}", response_model=PaginationResponse)
 def list_resources(
-    resource_type: str,
-    limit: int = Query(12, ge=1, le=100, description="每页条数"),
-    page: int = Query(1, ge=1, description="页码"),
-    category_id: int = Query(None, description="分类ID（可选）"),
-    db: Session = Depends(get_db),
+        resource_type: str,
+        limit: int = Query(12, ge=1, le=100, description="每页条数"),
+        page: int = Query(1, ge=1, description="页码"),
+        category_id: int = Query(None, description="分类ID（可选）"),
+        db: Session = Depends(get_db),
 ):
     """
     通用资源列表接口，支持分页与分类筛选。
@@ -43,7 +44,7 @@ def list_resources(
     if category_id is not None:
         # 分类筛选
         query = query.join(category_map, model.id == category_map.c[resource_type[:-1] + "_id"]) \
-                     .filter(category_map.c.category_id == category_id)
+            .filter(category_map.c.category_id == category_id)
 
     # 分页逻辑
     total_count = query.count()

@@ -1,6 +1,7 @@
 import re
 import mistune
 
+
 class MarkdownRenderer:
     def __init__(self):
         self.renderer = CustomRenderer()
@@ -8,6 +9,7 @@ class MarkdownRenderer:
 
     def render(self, content):
         return self.markdown(content)
+
 
 class CustomRenderer(mistune.HTMLRenderer):
     def paragraph(self, text):

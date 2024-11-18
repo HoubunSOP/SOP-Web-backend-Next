@@ -10,6 +10,7 @@ article_category_map = Table(
     Column("category_id", Integer, ForeignKey("categories.id", ondelete="CASCADE"), primary_key=True),
 )
 
+
 # 文章表
 class Article(Base):
     __tablename__ = "articles"

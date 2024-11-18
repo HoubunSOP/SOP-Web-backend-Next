@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from models.magazine import Magazine, magazine_category_map, magazine_comic_map
 from models.category import Category
 from database import get_db
-from schemas.magazine import MagazineDetail
+from schemas.magazine import MagazineDetail, MagazineCreate
 
 router = APIRouter()
 
@@ -36,3 +36,131 @@ def get_magazine_detail(magazine_id: int, db: Session = Depends(get_db)):
         comics=comic_names,
         categories=categories
     )
+
+
+@router.post("/magazines")
+def create_magazine(magazine_data: MagazineCreate, db: Session = Depends(get_db)):
+    """
+    创建新的杂志，并关联漫画和分类。
+    :param magazine_data: 包含杂志信息及漫画名称列表
+    """
+    # 检查是否已经存在该杂志名称
+    existing_magazine = db.query(Magazine).filter(Magazine.name == magazine_data.name).first()
+    if existing_magazine:
+        raise HTTPException(status_code=400, detail="该杂志已存在")
+
+    # 获取或创建默认分类（如果没有指定分类）
+    category_id = magazine_data.category_id if magazine_data.category_id else 5
+    category = db.query(Category).filter(Category.id == category_id).first()
+    if not category:
+        raise HTTPException(status_code=404, detail="分类未找到")
+
+    # 创建新杂志
+    new_magazine = Magazine(
+        name=magazine_data.name,
+        cover=magazine_data.cover,
+        publish_date=magazine_data.publish_date,
+        intro=magazine_data.intro,
+        link=magazine_data.link
+    )
+    db.add(new_magazine)
+    db.commit()
+    db.refresh(new_magazine)
+
+    # 关联分类
+    magazine_category = magazine_category_map.insert().values(
+        magazine_id=new_magazine.id,
+        category_id=category.id
+    )
+    db.execute(magazine_category)
+
+    # 处理漫画名称列表
+    for comic_name in magazine_data.comic_names:
+        # 如果漫画名称不存在，新增
+        existing_comic = db.query(magazine_comic_map).filter(
+            magazine_comic_map.c.magazine_id == new_magazine.id,
+            magazine_comic_map.c.comic_name == comic_name
+        ).first()
+        if not existing_comic:
+            new_comic = magazine_comic_map.insert().values(
+                magazine_id=new_magazine.id,
+                comic_name=comic_name
+            )
+            db.execute(new_comic)
+
+    db.commit()
+    return MagazineDetail(magazine=new_magazine, comics=magazine_data.comic_names, categories=[category])
+
+
+@router.put("/magazines/{magazine_id}")
+def update_magazine(magazine_id: int, magazine_data: MagazineCreate, db: Session = Depends(get_db)):
+    """
+    更新杂志信息，并重新关联漫画和分类。
+    :param magazine_id: 杂志ID
+    :param magazine_data: 包含杂志信息及漫画名称列表
+    """
+    # 查询杂志
+    magazine = db.query(Magazine).filter(Magazine.id == magazine_id).first()
+    if not magazine:
+        raise HTTPException(status_code=404, detail="杂志未找到")
+
+    # 更新杂志信息
+    magazine.name = magazine_data.name
+    magazine.cover = magazine_data.cover
+    magazine.publish_date = magazine_data.publish_date
+    magazine.intro = magazine_data.intro
+    magazine.link = magazine_data.link
+    db.commit()
+
+    # 更新分类
+    category_id = magazine_data.category_id if magazine_data.category_id else 5
+    category = db.query(Category).filter(Category.id == category_id).first()
+    if not category:
+        raise HTTPException(status_code=404, detail="分类未找到")
+
+    # 删除旧分类并插入新分类
+    db.query(magazine_category_map).filter(magazine_category_map.c.magazine_id == magazine.id).delete()
+    db.commit()
+    magazine_category = magazine_category_map.insert().values(
+        magazine_id=magazine.id,
+        category_id=category.id
+    )
+    db.execute(magazine_category)
+
+    # 删除原有漫画名称的关联
+    db.query(magazine_comic_map).filter(magazine_comic_map.c.magazine_id == magazine.id).delete()
+
+    # 重新插入漫画名称
+    for comic_name in magazine_data.comic_names:
+        new_comic = magazine_comic_map.insert().values(
+            magazine_id=magazine.id,
+            comic_name=comic_name
+        )
+        db.execute(new_comic)
+
+    db.commit()
+    return MagazineDetail(magazine=magazine, comics=magazine_data.comic_names, categories=[category])
+
+
+@router.delete("/magazines/{magazine_id}")
+def delete_magazine(magazine_id: int, db: Session = Depends(get_db)):
+    """
+    删除杂志信息，并删除与漫画的关联。
+    :param magazine_id: 杂志ID
+    """
+    # 查询杂志
+    magazine = db.query(Magazine).filter(Magazine.id == magazine_id).first()
+    if not magazine:
+        raise HTTPException(status_code=404, detail="杂志未找到")
+
+    # 删除杂志与分类的关联
+    db.query(magazine_category_map).filter(magazine_category_map.c.magazine_id == magazine_id).delete()
+
+    # 删除杂志与漫画的关联
+    db.query(magazine_comic_map).filter(magazine_comic_map.c.magazine_id == magazine_id).delete()
+
+    # 删除杂志
+    db.delete(magazine)
+    db.commit()
+
+    return {"detail": "杂志已删除"}

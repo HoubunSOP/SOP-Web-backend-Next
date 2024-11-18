@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models import Base
 
+
 # 分类类型表
 class CategoryType(Base):
     __tablename__ = "category_types"
@@ -10,6 +11,7 @@ class CategoryType(Base):
     name = Column(String(255), nullable=False, comment="分类类型名称")
 
     categories = relationship("Category", back_populates="type")
+
 
 # 分类表
 class Category(Base):

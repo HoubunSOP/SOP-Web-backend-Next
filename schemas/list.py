@@ -10,6 +10,7 @@ class ComicListItem(BaseModel):
     date: datetime.date
     cover: str
     auto: int
+
     class Config:
         from_attributes = True
 
@@ -37,6 +38,7 @@ class MagazineListItem(BaseModel):
 
 # 创建一个类型变量，用于支持不同的资源类型
 T = TypeVar('T', bound=BaseModel)
+
 
 class PaginationResponse(BaseModel, Generic[T]):
     items: List[T]  # 接受任何继承自 BaseModel 的类型

@@ -5,14 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7827c13-e8ce-419d-b43d-fcfe4bde55e2" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/routers/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/calendar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/permission_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sql" beforeDir="false" afterPath="$PROJECT_DIR$/install.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/log.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/article.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/magazine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/magazine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/comic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schemas/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/magazine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_main.http" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/biliCV/content.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/biliCV/content.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/biliCV/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/biliCV/list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/crawler/sample/comic_1668.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/sample/comic_1668.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/crawler/sample/magazine_903.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/sample/magazine_903.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/MarkdownRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/MarkdownRenderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/Permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/Permission.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,27 +70,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "FastAPI.未命名.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/main.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;FastAPI.未命名.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP 请求.test_main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.permission_test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/misaka10843/Documents/GitHub/SOP-Web-backend-Next/main.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
@@ -70,7 +101,10 @@
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="FastAPI.未命名">
+    <configuration name="test_main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" requestIdentifier="#1" runType="运行单个请求">
+      <method v="2" />
+    </configuration>
     <configuration name="未命名" type="Python.FastAPI" nameIsGenerated="true">
       <option name="file" value="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\main.py" />
       <module name="SOP-Web-backend-Next" />
@@ -87,6 +121,15 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="FastAPI.未命名" />
+      <item itemvalue="HTTP 请求.test_main | #1" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP 请求.test_main | #1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -109,7 +152,8 @@
       <workItem from="1730248116413" duration="647000" />
       <workItem from="1730293855664" duration="1940000" />
       <workItem from="1730624119279" duration="2103000" />
-      <workItem from="1731887627004" duration="17260000" />
+      <workItem from="1731887627004" duration="24309000" />
+      <workItem from="1731923667609" duration="8813000" />
     </task>
     <servers />
   </component>
@@ -117,6 +161,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1731916161327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1731933787950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$permission_test.coverage" NAME="permission_test 覆盖结果" MODIFIED="1731927253774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

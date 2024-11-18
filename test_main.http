@@ -1,3 +1,10 @@
+# curl --location --request GET '/users?skip&limit'
+#--header 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6Im1pc2FrYTEwODQzIiwicGVybWlzc2lvbnMiOjMxMzEzMTMxMzEsInVzZXJfZ3JvdXAiOjQsImV4cCI6MTczMTkyMzQzNn0.a1V806DNwTxJyl-U09z9MvXfWfK0QJEMizTLGwAuPSg'
+GET http://127.0.0.1:8000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6Im1pc2FrYTEwODQzIiwicGVybWlzc2lvbnMiOjMxMzEzMTMxMzEsInVzZXJfZ3JvdXAiOjQsImV4cCI6MTczMTkyMzc2OX0.QNwAJbftyN8fAvbgbWZH6pdrirD0k1jj4-Iv6HSn65Y
+
+###
+
 # Test your FastAPI endpoints
 
 GET https://api.bilibili.com/x/space/article?mid=1585955812&pn=1&ps=10&sort=publish_time

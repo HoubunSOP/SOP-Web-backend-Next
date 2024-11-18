@@ -12,8 +12,8 @@ async def main():
     articles = await my_user.get_articles()
     data = CVData.parse_obj(articles)
     for article in data.articles:
-
         print(article.id)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

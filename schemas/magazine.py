@@ -25,8 +25,17 @@ class Magazine(BaseModel):
 
 class MagazineDetail(BaseModel):
     magazine: Magazine
-    comics: Optional[List[str]]  # 漫画名称列表
-    categories: Optional[List[CategorySchema]]  # 分类名称列表
+    comics: Optional[List[str]]
+    categories: Optional[List[CategorySchema]]
 
     class Config:
         from_attributes = True
+
+class MagazineCreate(BaseModel):
+    name: str
+    publish_date: date
+    cover: Optional[str] = None
+    intro: Optional[str] = None
+    link: Optional[str] = None
+    comic_names: Optional[List[str]]
+    category_id: Optional[int] = None

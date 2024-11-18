@@ -18,7 +18,7 @@ magazine_comic_map = Table(
     Column("comic_name", String(255), nullable=False, primary_key=True, comment="漫画名称"),
 )
 
-# 杂志表
+
 class Magazine(Base):
     __tablename__ = "magazines"
 

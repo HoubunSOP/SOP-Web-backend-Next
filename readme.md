@@ -152,10 +152,10 @@ INSERT INTO settings (id, topswiper)
 VALUES ('0', '');
 
 ```
+
 接下来我会告诉你根据上方数据库会怎么操作
 
 但是在此之前我想修改一下文章表中的comic是与漫画id进行关联，并且可以关联多个，请你根据情况来进行修改
-
 
 增删改comics
 增时我会提供name，作者ID，date,intro,cover,auto以及漫画的分类（其中如果没有提供分类的话就放到漫画的未分类中）
@@ -166,7 +166,7 @@ VALUES ('0', '');
 增删改magazine
 增时我会提供name,publish_date,intro,cover,link,author_id以及comic id数组（其中如果没有提供分类的话就放到文章的未分类中）
 
-增删改categories 
+增删改categories
 增时我会提供name与type
 
 在获取指定ID的comic时我希望获取到comics中的name，作者ID，作者名称，date,intro,cover,auto以及漫画的分类，还有链接到mangazine的ID以及名称和cover

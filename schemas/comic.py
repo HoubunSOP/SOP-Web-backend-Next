@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import date
 
+
 # 分类响应模型
 class Category(BaseModel):
     id: int
@@ -10,6 +11,7 @@ class Category(BaseModel):
     class Config:
         from_attributes = True
 
+
 # 漫画作者响应模型
 class ComicAuthor(BaseModel):
     id: int
@@ -17,6 +19,7 @@ class ComicAuthor(BaseModel):
 
     class Config:
         from_attributes = True
+
 
 # 漫画详细信息响应模型
 class ComicDetail(BaseModel):
@@ -32,3 +35,14 @@ class ComicDetail(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ComicCreate(BaseModel):
+    name: str
+    original_name: Optional[str] = None
+    author_name: str  # 作者名字
+    date: date
+    intro: Optional[str] = None
+    cover: str
+    auto: bool = False
+    category_id: Optional[int] = None  # 分类 ID，可选字段
