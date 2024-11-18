@@ -1,22 +1,34 @@
 from pydantic import BaseModel
+from typing import List, Optional
 from datetime import date
 
-class ComicCreate(BaseModel):
-    name: str
-    author_id: int
-    date: date
-    intro: str = None
-    cover: str
-    auto: bool = False
-
-class Comic(BaseModel):
+# 分类响应模型
+class Category(BaseModel):
     id: int
     name: str
-    author_id: int
-    date: date
-    intro: str = None
-    cover: str
-    auto: bool = False
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+# 漫画作者响应模型
+class ComicAuthor(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        from_attributes = True
+
+# 漫画详细信息响应模型
+class ComicDetail(BaseModel):
+    id: int
+    name: str
+    original_name: Optional[str]  # 漫画原名可以为空
+    date: date
+    intro: Optional[str]
+    cover: str
+    auto: bool
+    author: ComicAuthor  # 包含作者信息
+    categories: List[Category]  # 包含漫画的分类列表
+
+    class Config:
+        from_attributes = True

@@ -6,3 +6,5 @@ bilibili-api-python >=16.2.0
 uvicorn
 SQLAlchemy~=2.0.36
 mistune~=3.0.2
+PyYAML~=6.0.2
+python-dotenv~=1.0.1
