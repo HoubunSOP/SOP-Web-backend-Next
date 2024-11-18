@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Query, HTTPException, Depends
 from sqlalchemy.orm import Session
 from database import get_db
-from models.list import Comics, Articles, Magazines, comic_category_map, article_category_map, magazine_category_map
+from models.article import Article, article_category_map
+from models.comic import Comic, comic_category_map
+from models.magazine import Magazine, magazine_category_map
 from schemas.list import (
     PaginationResponse,
     ComicListItem,
@@ -20,18 +22,14 @@ def list_resources(
     db: Session = Depends(get_db),
 ):
     """
-    通用列表接口，支持分页和分类筛选。
-    :param db:
-    :param resource_type: 资源类型 (comic, articles, magazines)
-    :param limit: 每页条数
-    :param page: 当前页码
-    :param category_id: 分类ID
+    通用资源列表接口，支持分页与分类筛选。
+    :param resource_type: 资源类型 ('comics', 'articles', 'magazines')
     """
-    # 资源类型与模型、Schema、关联表的映射
+    # 模型与Schema映射
     model_map = {
-        "comics": (Comics, ComicListItem, comic_category_map),
-        "articles": (Articles, ArticleListItem, article_category_map),
-        "magazines": (Magazines, MagazineListItem, magazine_category_map),
+        "comics": (Comic, ComicListItem, comic_category_map),
+        "articles": (Article, ArticleListItem, article_category_map),
+        "magazines": (Magazine, MagazineListItem, magazine_category_map),
     }
 
     if resource_type not in model_map:
@@ -43,8 +41,8 @@ def list_resources(
     query = db.query(model)
 
     if category_id is not None:
-        # 按分类ID过滤
-        query = query.join(category_map, model.id == category_map.c[resource_type + "_id"]) \
+        # 分类筛选
+        query = query.join(category_map, model.id == category_map.c[resource_type[:-1] + "_id"]) \
                      .filter(category_map.c.category_id == category_id)
 
     # 分页逻辑
@@ -54,14 +52,8 @@ def list_resources(
     items = query.offset(offset).limit(limit).all()
 
     # 数据格式化
-    result = []
-    for item in items:
-        try:
-            print(schema.from_orm(item))
-            result.append(schema.from_orm(item))
-        except Exception as e:
-            print(f"from_orm 失败：{item}, 错误：{e}")
-    print(result)
+    result = [schema.from_orm(item) for item in items]
+
     return {
         "items": result,
         "total_pages": total_pages,

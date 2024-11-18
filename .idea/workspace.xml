@@ -5,46 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7827c13-e8ce-419d-b43d-fcfe4bde55e2" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.sample" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/article.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/comic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/magazine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/magazine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/magazine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.local.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/article.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/article_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/category_type.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/models/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/comic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comic_author.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comic_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/magazine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/magazine_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/magazine_comic_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user_group.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/article.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/article_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/category_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/comic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/comic_author.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/comic_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/magazine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/magazine_category_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/magazine_comic_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/user_group.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/list.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +114,7 @@
       <workItem from="1730248116413" duration="647000" />
       <workItem from="1730293855664" duration="1940000" />
       <workItem from="1730624119279" duration="2103000" />
-      <workItem from="1731887627004" duration="12757000" />
+      <workItem from="1731887627004" duration="14987000" />
     </task>
     <servers />
   </component>
@@ -149,6 +122,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1731909106400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1731913922849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

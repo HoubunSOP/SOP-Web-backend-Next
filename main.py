@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi_login import LoginManager
 
 from config import AUTH_SECRET
-from routers import list, article, comic
+from routers import list, article, comic, magazine
 
 app = FastAPI()
 SECRET = AUTH_SECRET
@@ -11,6 +11,7 @@ manager = LoginManager(SECRET, "/login")
 app.include_router(list.router, tags=["List"])
 app.include_router(article.router, tags=["Article"])
 app.include_router(comic.router, tags=["Comic"])
+app.include_router(magazine.router, tags=["magazine"])
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
