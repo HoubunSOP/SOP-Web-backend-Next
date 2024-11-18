@@ -6,20 +6,28 @@ import models.user
 from models.category import Category
 from models.article import Article
 from database import get_db
+from utils.MarkdownRenderer import MarkdownRenderer
 
 router = APIRouter()
 
 
 @router.get("/articles/{article_id}", response_model=ArticleDetail)
-def get_article_detail(article_id: int, db: Session = Depends(get_db)):
+def get_article_detail(article_id: int, edit: bool = False, db: Session = Depends(get_db)):
     """
     获取文章详情接口
     :param article_id: 文章ID
+     :param edit: 是否为编辑模式，如果为 False，则渲染 content 为 HTML
     """
     article = db.query(Article).filter(Article.id == article_id).first()
     if not article:
         raise HTTPException(status_code=404, detail="文章未找到")
+    # 如果 edit 为 False，则将 intro 渲染为 HTML
+    if not edit and article.content:
+        renderer = MarkdownRenderer()
+        article.content = renderer.render(article.content)
+
     return article
+
 
 @router.post("/articles")
 def create_article(article: ArticleCreate, db: Session = Depends(get_db)):
@@ -51,6 +59,7 @@ def create_article(article: ArticleCreate, db: Session = Depends(get_db)):
     db.refresh(new_article)
 
     return new_article
+
 
 @router.put("/articles/{article_id}")
 def update_article(article_id: int, article: ArticleCreate, db: Session = Depends(get_db)):

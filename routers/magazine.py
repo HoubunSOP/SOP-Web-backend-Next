@@ -4,20 +4,26 @@ from models.magazine import Magazine, magazine_category_map, magazine_comic_map
 from models.category import Category
 from database import get_db
 from schemas.magazine import MagazineDetail, MagazineCreate
+from utils.MarkdownRenderer import MarkdownRenderer
 
 router = APIRouter()
 
 
 @router.get("/magazines/{magazine_id}", response_model=MagazineDetail)
-def get_magazine_detail(magazine_id: int, db: Session = Depends(get_db)):
+def get_magazine_detail(magazine_id: int, edit: bool = False, db: Session = Depends(get_db)):
     """
     获取杂志详细信息接口，包括该杂志的漫画名称及分类。
     :param magazine_id: 杂志ID
+    :param edit: 是否为编辑模式，如果为 False，则渲染 intro 为 HTML
     """
     # 查询杂志信息
     magazine = db.query(Magazine).filter(Magazine.id == magazine_id).first()
     if not magazine:
         raise HTTPException(status_code=404, detail="杂志未找到")
+    # 如果 edit 为 False，则将 intro 渲染为 HTML
+    if not edit and magazine.intro:
+        renderer = MarkdownRenderer()
+        magazine.intro = renderer.render(magazine.intro)
 
     # 获取与该杂志相关的漫画名称
     comic_names = db.query(magazine_comic_map.c.comic_name).filter(

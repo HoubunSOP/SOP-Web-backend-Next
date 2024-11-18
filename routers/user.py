@@ -7,18 +7,8 @@ from database import get_db
 from models.user import User
 from schemas.user import UserLogin, UserCreate
 from utils.Permission import Permission
-from utils.auth import verify_password, hash_password
-from datetime import timedelta
-from config import AUTH_SECRET
+from utils.auth import verify_password, hash_password, ACCESS_SECURITY
 
-SECRET = AUTH_SECRET
-ACCESS_TOKEN_EXPIRE_days = 30
-
-access_security = JwtAccessBearerCookie(
-    secret_key=AUTH_SECRET,
-    auto_error=True,
-    access_expires_delta=timedelta(days=ACCESS_TOKEN_EXPIRE_days)
-)
 router = APIRouter()
 
 
@@ -35,7 +25,7 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
         raise InvalidCredentialsException
 
     # 创建 Token
-    access_token = access_security.create_access_token(
+    access_token = ACCESS_SECURITY.create_access_token(
         subject={"id": user.id, "name": user.username, "permissions": user.user_permission,
                  "user_group": user.user_position})
     return {"access_token": access_token}
@@ -70,7 +60,7 @@ from fastapi import Depends, HTTPException, status, Request
 
 @router.put("/users/me")
 def update_user(user: UserCreate, db: Session = Depends(get_db),
-                credentials: JwtAuthorizationCredentials = Security(access_security)):
+                credentials: JwtAuthorizationCredentials = Security(ACCESS_SECURITY)):
     if not credentials:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     user_id = credentials['id']
@@ -93,7 +83,7 @@ def update_user(user: UserCreate, db: Session = Depends(get_db),
 
 @router.get("/users")
 def get_users(skip: int = Query(0, ge=0), limit: int = Query(15, le=100), db: Session = Depends(get_db),
-              credentials: JwtAuthorizationCredentials = Security(access_security)):
+              credentials: JwtAuthorizationCredentials = Security(ACCESS_SECURITY)):
     if not credentials or not Permission.has_permission(credentials['permissions'], 'user', Permission.READ):
         print(credentials['permissions'])
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
@@ -115,7 +105,7 @@ def get_users(skip: int = Query(0, ge=0), limit: int = Query(15, le=100), db: Se
 
 @router.put("/users/{user_id}")
 def update_user_by_admin(user_id: int, user: UserCreate, db: Session = Depends(get_db),
-                         credentials: JwtAuthorizationCredentials = Security(access_security)):
+                         credentials: JwtAuthorizationCredentials = Security(ACCESS_SECURITY)):
     if not credentials or not Permission.has_permission(credentials['permissions'], 'user', Permission.MODIFY):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     db_user = db.query(User).filter(User.id == user_id).first()

@@ -5,20 +5,29 @@ from database import get_db
 from models.category import Category
 from models.comic import Comic, ComicAuthor
 from schemas.comic import ComicDetail, ComicCreate
+from utils.MarkdownRenderer import MarkdownRenderer
 
 router = APIRouter()
 
 
 @router.get("/comics/{comic_id}", response_model=ComicDetail)
-def get_comic_detail(comic_id: int, db: Session = Depends(get_db)):
+def get_comic_detail(comic_id: int, edit: bool = False, db: Session = Depends(get_db)):
     """
     获取漫画详情接口，包括作者信息
     :param comic_id: 漫画ID
+    :param edit: 是否为编辑模式，如果为 False，则渲染 intro 为 HTML
     """
     comic = db.query(Comic).join(ComicAuthor).filter(Comic.id == comic_id).first()
     if not comic:
         raise HTTPException(status_code=404, detail="漫画未找到")
+
+    # 如果 edit 为 False，则将 intro 渲染为 HTML
+    if not edit and comic.intro:
+        renderer = MarkdownRenderer()
+        comic.intro = renderer.render(comic.intro)
+
     return comic
+
 
 @router.post("/comics")
 def create_comic(comic: ComicCreate, db: Session = Depends(get_db)):
@@ -58,6 +67,7 @@ def create_comic(comic: ComicCreate, db: Session = Depends(get_db)):
     db.refresh(new_comic)
 
     return new_comic
+
 
 @router.put("/comics/{comic_id}")
 def update_comic(comic_id: int, comic: ComicCreate, db: Session = Depends(get_db)):
@@ -100,6 +110,7 @@ def update_comic(comic_id: int, comic: ComicCreate, db: Session = Depends(get_db
     db.refresh(db_comic)
 
     return db_comic
+
 
 @router.delete("/comics/{comic_id}")
 def delete_comic(comic_id: int, db: Session = Depends(get_db)):
