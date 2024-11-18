@@ -10,7 +10,6 @@ class ComicListItem(BaseModel):
     date: datetime.date
     cover: str
     auto: int
-
     class Config:
         from_attributes = True
 

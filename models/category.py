@@ -17,8 +17,7 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, comment="分类唯一标识")
     name = Column(String(255), nullable=False, comment="分类名称")
-    category_type = Column(Integer, ForeignKey("category_types.id", ondelete="CASCADE"), nullable=False, comment="分类类型ID")
-
+    category_type = Column(Integer, ForeignKey("category_types.id"))
     type = relationship("CategoryType", back_populates="categories")
     comics = relationship("Comic", secondary="comic_category_map", back_populates="categories")
     articles = relationship("Article", secondary="article_category_map", back_populates="categories")
