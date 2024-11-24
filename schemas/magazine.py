@@ -37,5 +37,5 @@ class MagazineCreate(BaseModel):
     cover: Optional[str] = None
     intro: Optional[str] = None
     link: Optional[str] = None
-    comic_names: Optional[List[str]]
+    comics: Optional[List[str]]
     category_id: Optional[int] = None

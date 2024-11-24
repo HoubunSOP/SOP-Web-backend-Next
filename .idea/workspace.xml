@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7827c13-e8ce-419d-b43d-fcfe4bde55e2" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/utils/response.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/magazine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/category.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/magazine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/crawler/sample/comic_1668.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/sample/comic_1668.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/magazine.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/magazine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/crawler/cherry_comic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/MarkdownRenderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/MarkdownRenderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +61,9 @@
   &quot;keyToString&quot;: {
     &quot;FastAPI.未命名.executor&quot;: &quot;Run&quot;,
     &quot;HTTP 请求.test_main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cherry_comic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.index.executor&quot;: &quot;Run&quot;,
     &quot;Python.permission_test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -76,6 +95,29 @@
     <configuration name="test_main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" requestIdentifier="#1" runType="运行单个请求">
       <method v="2" />
     </configuration>
+    <configuration name="auth" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP-Web-backend-Next" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/auth.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="未命名" type="Python.FastAPI" nameIsGenerated="true">
       <option name="file" value="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next\main.py" />
       <module name="SOP-Web-backend-Next" />
@@ -95,9 +137,11 @@
     <list>
       <item itemvalue="FastAPI.未命名" />
       <item itemvalue="HTTP 请求.test_main | #1" />
+      <item itemvalue="Python.auth" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.auth" />
         <item itemvalue="HTTP 请求.test_main | #1" />
       </list>
     </recent_temporary>
@@ -124,7 +168,16 @@
       <workItem from="1730293855664" duration="1940000" />
       <workItem from="1730624119279" duration="2103000" />
       <workItem from="1731887627004" duration="24309000" />
-      <workItem from="1731923667609" duration="9716000" />
+      <workItem from="1731923667609" duration="10264000" />
+      <workItem from="1731937657535" duration="4240000" />
+      <workItem from="1731982052799" duration="2402000" />
+      <workItem from="1731989335697" duration="98000" />
+      <workItem from="1732088821900" duration="9583000" />
+      <workItem from="1732103497277" duration="11413000" />
+      <workItem from="1732264556883" duration="6747000" />
+      <workItem from="1732275170852" duration="15066000" />
+      <workItem from="1732327160272" duration="3252000" />
+      <workItem from="1732414025733" duration="16663000" />
     </task>
     <servers />
   </component>
@@ -132,7 +185,10 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1731933989355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1732433221119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$permission_test.coverage" NAME="permission_test 覆盖结果" MODIFIED="1731927253774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$auth.coverage" NAME="auth 覆盖结果" MODIFIED="1732278005489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$cherry_comic.coverage" NAME="cherry_comic 覆盖结果" MODIFIED="1732418120384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/crawler" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$index.coverage" NAME="index 覆盖结果" MODIFIED="1732418001544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/routers" />
   </component>
 </project>

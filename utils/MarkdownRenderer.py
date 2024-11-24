@@ -25,6 +25,14 @@ class CustomRenderer(mistune.HTMLRenderer):
         pattern = r'\[underline\](.*?)\[/underline\]'
         replacement = r'<span class="underline">\1</span>'
         text = re.sub(pattern, replacement, text)
+        # 添加文字居中
+        pattern = r'\[center\](.*?)\[/center\]'
+        replacement = r'<p class="text-center">\1</p>'
+        text = re.sub(pattern, replacement, text)
+        # 添加文字居中
+        pattern = r'\[right\](.*?)\[/right\]'
+        replacement = r'<p style="text-align: center;">\1</p>'
+        text = re.sub(pattern, replacement, text)
         # 添加success框
         pattern = r'\[success\](.*?)\[/success\]'
         replacement = r'<article class="message is-success"><div class="message-body"><p>\1</p></div></article>'
@@ -38,16 +46,11 @@ class CustomRenderer(mistune.HTMLRenderer):
         replacement = r'<article class="message is-warning"><div class="message-body"><p>\1</p></div></article>'
         text = re.sub(pattern, replacement, text)
         # 添加自定义文字颜色与文字大小
-        pattern = r'\[font\s+color=(.*?)\s*(?:size=(\d+))?\](.*?)\[/font\]'
-        replacement = r'<span style="color:\1; font-size:\2px;">\3</span>'
-        text = re.sub(pattern, replacement, text)
+        pattern = r'\[font\s+color=(.*?)\s*(?:size=(.*?))?\](.*?)\[/font\]'
+        replacement = r'<font color="\1" size="\2">\3</font>'
+        replaced_text = re.sub(pattern, replacement, text)
 
-        return super().paragraph(text)
-
-    # 将文章中的图片支持点击放大
-    def image(self, alt, url, title=None):
-        title_attr = ' title="{}"'.format(title) if title else ""
-        return '<img src="{}" alt="{}"{} class="image-zoomableqwq">'.format(url, alt, title_attr)
+        return super().paragraph(replaced_text)
 
 # 使用示例
 # renderer = MarkdownRenderer()

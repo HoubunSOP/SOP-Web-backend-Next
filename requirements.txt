@@ -11,3 +11,4 @@ python-dotenv~=1.0.1
 passlib~=1.7.4
 starlette~=0.41.0
 bcrypt
+pycryptodome

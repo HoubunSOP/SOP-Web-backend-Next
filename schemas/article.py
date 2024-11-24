@@ -16,7 +16,7 @@ class UserDetail(BaseModel):
 
 class Category(BaseModel):
     id: int
-    name: str
+    name: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -56,8 +56,7 @@ class ArticleCreate(BaseModel):
     cover: Optional[str] = None
     comic: Optional[str] = None
     recommended: bool = False
-    author_id: int
-    category_id: Optional[int] = None  # 分类 ID，可选字段
+    categories: Optional[Category] = None  # 分类 ID，可选字段
 
 
 class ArticleResponse(ArticleCreate):

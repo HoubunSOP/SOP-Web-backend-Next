@@ -1,6 +1,9 @@
-from pydantic import BaseModel
-from typing import List, TypeVar, Generic
 import datetime
+from typing import List
+
+from pydantic import BaseModel
+
+from schemas.article import Category
 
 
 # 漫画响应模型
@@ -10,6 +13,7 @@ class ComicListItem(BaseModel):
     date: datetime.date
     cover: str
     auto: int
+    categories: List[Category]  # 添加分类字段
 
     class Config:
         from_attributes = True
@@ -20,6 +24,8 @@ class ArticleListItem(BaseModel):
     title: str
     date: datetime.date
     cover: str
+    recommended: bool
+    categories: List[Category]  # 添加分类字段
 
     class Config:
         from_attributes = True
@@ -31,16 +37,7 @@ class MagazineListItem(BaseModel):
     name: str
     publish_date: datetime.date
     cover: str
+    categories: List[Category]  # 添加分类字段
 
     class Config:
         from_attributes = True
-
-
-# 创建一个类型变量，用于支持不同的资源类型
-T = TypeVar('T', bound=BaseModel)
-
-
-class PaginationResponse(BaseModel, Generic[T]):
-    items: List[T]  # 接受任何继承自 BaseModel 的类型
-    total_pages: int
-    current_page: int

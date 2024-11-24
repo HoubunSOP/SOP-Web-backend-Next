@@ -9,10 +9,12 @@ from models.magazine import magazine_category_map, Magazine
 from models.article import article_category_map, Article
 from schemas.category import CategoryCountResponse, CategoryTypeResponse, CategoryCreate, CategoryUpdate
 
+from utils.response import create_response
+
 router = APIRouter()
 
 
-@router.get("/categories", response_model=list[CategoryCountResponse])
+@router.get("/categories")
 def get_categories(
         category_type_id: Optional[int] = Query(None, description="分类类型 ID（可选）"),
         db: Session = Depends(get_db),
@@ -57,7 +59,7 @@ def get_categories(
             )
         )
 
-    return category_counts
+    return create_response(data=category_counts)
 
 
 @router.post("/categories")
@@ -87,7 +89,7 @@ def create_category(category_data: CategoryCreate, db: Session = Depends(get_db)
     db.add(new_category)
     db.commit()
     db.refresh(new_category)
-    return new_category  # 返回的是SQLAlchemy对象，FastAPI会自动转换为Pydantic模型
+    return create_response(message="分类创建成功")  # 返回的是SQLAlchemy对象，FastAPI会自动转换为Pydantic模型
 
 
 @router.put("/categories/{category_id}")
@@ -111,7 +113,7 @@ def update_category(category_id: int, category_data: CategoryUpdate, db: Session
     category.category_type = category_data.category_type
     db.commit()
     db.refresh(category)
-    return category  # 返回的是SQLAlchemy对象，FastAPI会自动转换为Pydantic模型
+    return create_response(message="分类更改成功")  # 返回的是SQLAlchemy对象，FastAPI会自动转换为Pydantic模型
 
 
 @router.delete("/categories/{category_id}")
@@ -138,4 +140,4 @@ def delete_category(category_id: int, db: Session = Depends(get_db)):
     # 删除分类
     db.delete(category)
     db.commit()
-    return {"detail": "分类已删除"}
+    return create_response(message="分类删除成功")

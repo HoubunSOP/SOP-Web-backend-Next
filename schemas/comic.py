@@ -45,4 +45,18 @@ class ComicCreate(BaseModel):
     intro: Optional[str] = None
     cover: str
     auto: bool = False
-    category_id: Optional[int] = None  # 分类 ID，可选字段
+    isbn: Optional[int] = None
+    cid: Optional[str] = None
+    volume: Optional[int] = 1
+    category: Optional[Category] = None  # 分类 ID，可选字段
+
+class AutoComicCreate(BaseModel):
+    name: str
+    original_name: Optional[str] = None
+    author_name: str  # 作者名字
+    date: date
+    intro: Optional[str] = None
+    cover: str
+    isbn: Optional[int] = None
+    cid: Optional[int] = None
+    volume: Optional[int] = 1

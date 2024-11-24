@@ -14,7 +14,7 @@ magazine_category_map = Table(
 magazine_comic_map = Table(
     "magazine_comic_map",
     Base.metadata,
-    Column("magazine_id", Integer, ForeignKey("magazines.id", ondelete="CASCADE"), primary_key=True),
+    Column("magazine_id", Integer, ForeignKey("magazines.id", ondelete="CASCADE")),
     Column("comic_name", String(255), nullable=False, primary_key=True, comment="漫画名称"),
 )
 

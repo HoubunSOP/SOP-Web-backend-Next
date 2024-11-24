@@ -1,13 +1,14 @@
-from fastapi_jwt import JwtAccessBearerCookie, JwtAuthorizationCredentials
-from fastapi_login.exceptions import InvalidCredentialsException
 from fastapi import APIRouter, Depends, Query, Security
+from fastapi_jwt import JwtAuthorizationCredentials
+from fastapi_login.exceptions import InvalidCredentialsException
 from sqlalchemy.orm import Session
 
 from database import get_db
 from models.user import User
 from schemas.user import UserLogin, UserCreate
 from utils.Permission import Permission
-from utils.auth import verify_password, hash_password, ACCESS_SECURITY
+from utils.auth import verify_password, hash_password, ACCESS_SECURITY, decrypt
+from utils.response import create_response
 
 router = APIRouter()
 
@@ -19,7 +20,8 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == data.username).first()
     if not user:
         raise InvalidCredentialsException
-
+    if data.aes:
+        data.password = decrypt(data.password, data.iv)
     # 验证密码
     if not verify_password(data.password, user.password):
         raise InvalidCredentialsException
@@ -28,7 +30,7 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
     access_token = ACCESS_SECURITY.create_access_token(
         subject={"id": user.id, "name": user.username, "permissions": user.user_permission,
                  "user_group": user.user_position})
-    return {"access_token": access_token}
+    return create_response(data={"access_token": access_token})
 
 
 @router.post("/register")
@@ -52,10 +54,10 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
 
-    return {"detail": "用户创建完成"}
+    return create_response(message="用户创建成功")
 
 
-from fastapi import Depends, HTTPException, status, Request
+from fastapi import Depends, HTTPException, status
 
 
 @router.put("/users/me")
@@ -78,7 +80,7 @@ def update_user(user: UserCreate, db: Session = Depends(get_db),
     db.commit()
     db.refresh(db_user)
 
-    return {"detail": "资料更新成功"}
+    return create_response(message="资料更新成功")
 
 
 @router.get("/users")
@@ -96,11 +98,11 @@ def get_users(skip: int = Query(0, ge=0), limit: int = Query(15, le=100), db: Se
     # 计算总页数
     total_pages = (total_users + limit - 1) // limit
 
-    return {
+    return create_response(data={
         "total_users": total_users,
         "total_pages": total_pages,
         "users": users
-    }
+    })
 
 
 @router.put("/users/{user_id}")
@@ -110,7 +112,7 @@ def update_user_by_admin(user_id: int, user: UserCreate, db: Session = Depends(g
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     db_user = db.query(User).filter(User.id == user_id).first()
     if not db_user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="未找到指定用户")
 
     # 修改用户资料，包括权限
     db_user.username = user.username
@@ -122,4 +124,4 @@ def update_user_by_admin(user_id: int, user: UserCreate, db: Session = Depends(g
     db.commit()
     db.refresh(db_user)
 
-    return {"message": "User updated successfully"}
+    return create_response(message="指定用户资料更新成功")

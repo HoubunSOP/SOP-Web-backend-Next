@@ -1,18 +1,23 @@
 from datetime import datetime, timedelta
 from typing import List
 
-from models.comic import Comic
+from models.category import Category
+from models.comic import Comic, ComicAuthor
+from models.magazine import Magazine
 from schemas.calendar import ComicCalendarItem
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from models.article import Article
 from schemas.article import ArticleRecommendationItem
 from database import get_db
+from tests.crawler.cherry_comic import to_comic, to_mz
+
+from utils.response import create_response
 
 router = APIRouter()
 
 
-@router.get("/calendar", response_model=List[ComicCalendarItem])
+@router.get("/calendar")
 def get_comics_calendar(db: Session = Depends(get_db)):
     # 获取当前日期
     today = datetime.today().date()
@@ -30,19 +35,20 @@ def get_comics_calendar(db: Session = Depends(get_db)):
     # 返回漫画信息和是否已经发售（isComplete）
     comics_result = []
     for comic in comics_query:
+        name = f"{comic.name} 第{comic.volume}卷"
         is_complete = comic.date <= today  # 如果发售日期小于等于今天，则已经发售
         comics_result.append(ComicCalendarItem(
             id=comic.id,
-            name=comic.name,
+            name=name,
             original_name=comic.original_name,
             date=comic.date,
             cover=comic.cover,
             is_complete=is_complete
         ))
 
-    return comics_result
+    return create_response(data=comics_result)
 
-@router.get("/recommended", response_model=List[ArticleRecommendationItem])
+@router.get("/recommended")
 def get_recommended_articles(
         limit: int = Query(5, le=100, ge=1, description="推荐文章输出数量(默认5)"),
         db: Session = Depends(get_db)
@@ -53,4 +59,29 @@ def get_recommended_articles(
     if not recommended_articles:
         raise HTTPException(status_code=404, detail="没有推荐文章")
 
-    return recommended_articles
+    return create_response(data=recommended_articles)
+
+@router.get("/counts")
+def get_counts(db: Session = Depends(get_db)):
+    """
+    获取杂志、文章、漫画、分类和漫画作者的总数量，以及 auto=1 的漫画数量
+    """
+    # 查询各个表的总数量
+    article_count = db.query(Article).count()
+    comic_count = db.query(Comic).count()
+    category_count = db.query(Category).count()
+    comic_author_count = db.query(ComicAuthor).count()
+    magazine_count = db.query(Magazine).count()
+
+    # 查询 auto=1 的漫画数量
+    auto_comic_count = db.query(Comic).filter(Comic.auto == 1).count()
+
+    # 返回结构化数据
+    return create_response(data={
+        "articles": article_count,
+        "comics": comic_count,
+        "categories": category_count,
+        "comic_authors": comic_author_count,
+        "magazines": magazine_count,
+        "auto_comics": auto_comic_count
+    })

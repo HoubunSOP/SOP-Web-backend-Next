@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from typing import Optional
+
+from pydantic import BaseModel
+
 
 class UserCreate(BaseModel):
     username: str
@@ -11,7 +13,10 @@ class UserCreate(BaseModel):
     class Config:
         from_attributes = True
 
+
 # 用户登录时的 Pydantic Schema
 class UserLogin(BaseModel):
     username: str
     password: str
+    aes: Optional[bool] = False
+    iv: Optional[str] = None

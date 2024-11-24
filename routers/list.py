@@ -2,19 +2,19 @@ from fastapi import APIRouter, Query, HTTPException, Depends
 from sqlalchemy.orm import Session
 from database import get_db
 from models.article import Article, article_category_map
+from models.category import Category
 from models.comic import Comic, comic_category_map
 from models.magazine import Magazine, magazine_category_map
 from schemas.list import (
-    PaginationResponse,
     ComicListItem,
     ArticleListItem,
     MagazineListItem,
 )
+from utils.response import create_response
 
 router = APIRouter()
 
-
-@router.get("/list/{resource_type}", response_model=PaginationResponse)
+@router.get("/list/{resource_type}")
 def list_resources(
         resource_type: str,
         limit: int = Query(12, ge=1, le=100, description="每页条数"),
@@ -39,24 +39,29 @@ def list_resources(
     model, schema, category_map = model_map[resource_type]
 
     # 构建查询
-    query = db.query(model)
+    query = db.query(model).join(category_map, model.id == category_map.c[resource_type[:-1] + "_id"]) \
+        .join(Category, Category.id == category_map.c.category_id)
 
     if category_id is not None:
         # 分类筛选
-        query = query.join(category_map, model.id == category_map.c[resource_type[:-1] + "_id"]) \
-            .filter(category_map.c.category_id == category_id)
-
+        query = query.filter(category_map.c.category_id == category_id)
+    query = query.order_by(model.date.desc())
     # 分页逻辑
     total_count = query.count()
     total_pages = (total_count + limit - 1) // limit
     offset = (page - 1) * limit
     items = query.offset(offset).limit(limit).all()
 
-    # 数据格式化
-    result = [schema.from_orm(item) for item in items]
+    # 数据格式化：将分类信息加入到每个资源项中
+    result = []
+    for item in items:
+        item_schema = schema.from_orm(item)
+        categories = item.categories # 获取分类名称
+        item_schema.categories = categories  # 将分类信息添加到响应中
+        result.append(item_schema)
 
-    return {
+    return create_response(data={
         "items": result,
         "total_pages": total_pages,
         "current_page": page,
-    }
+    })

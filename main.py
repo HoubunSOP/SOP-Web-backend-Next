@@ -1,9 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from routers import list, article, comic, magazine, category, search, index, user
+from utils.response import http_exception_handler, generic_exception_handler
 
 app = FastAPI()
-
+# 注册异常处理器
+app.add_exception_handler(HTTPException, http_exception_handler)
+app.add_exception_handler(Exception, generic_exception_handler)
 app.include_router(list.router, tags=["Search"])
 app.include_router(search.router, tags=["Search"])
 app.include_router(article.router, tags=["Article"])

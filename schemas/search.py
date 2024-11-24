@@ -16,10 +16,10 @@ class ComicListItem(BaseModel):
 
 
 class ArticleListItem(BaseModel):
-    id: int
-    title: str
+    id: Optional[int] = None
+    title: Optional[str] = None
     content: Optional[str] = None
-    user: str  # 文章的用户
+    user: Optional[str] = None  # 文章的用户
 
     class Config:
         from_attributes = True
@@ -33,12 +33,27 @@ class MagazineListItem(BaseModel):
     class Config:
         from_attributes = True
 
+class CategoryTypeResponse(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        from_attributes = True
+
+
+class CategoryListItem(BaseModel):
+    id: int
+    name: str
+    type: CategoryTypeResponse
+
+    class Config:
+        from_attributes = True
 
 class SearchResponse(BaseModel):
     comics: List[ComicListItem]
     articles: List[ArticleListItem]
     magazines: List[MagazineListItem]
-    categories: List[str]  # 分类名称列表
+    categories: List[CategoryListItem]
     page: int
     limit: int
     total_results: int

@@ -4,12 +4,14 @@ from models.magazine import Magazine, magazine_category_map, magazine_comic_map
 from models.category import Category
 from database import get_db
 from schemas.magazine import MagazineDetail, MagazineCreate
+
 from utils.MarkdownRenderer import MarkdownRenderer
+from utils.response import create_response
 
 router = APIRouter()
 
 
-@router.get("/magazines/{magazine_id}", response_model=MagazineDetail)
+@router.get("/magazines/{magazine_id}")
 def get_magazine_detail(magazine_id: int, edit: bool = False, db: Session = Depends(get_db)):
     """
     获取杂志详细信息接口，包括该杂志的漫画名称及分类。
@@ -37,11 +39,11 @@ def get_magazine_detail(magazine_id: int, edit: bool = False, db: Session = Depe
     categories = db.query(Category).filter(Category.id.in_(category_ids)).all()  # 获取分类信息
 
     # 返回杂志详情、相关漫画名称和分类信息
-    return MagazineDetail(
+    return create_response(data=MagazineDetail(
         magazine=magazine,
         comics=comic_names,
         categories=categories
-    )
+    ))
 
 
 @router.post("/magazines")
@@ -81,7 +83,7 @@ def create_magazine(magazine_data: MagazineCreate, db: Session = Depends(get_db)
     db.execute(magazine_category)
 
     # 处理漫画名称列表
-    for comic_name in magazine_data.comic_names:
+    for comic_name in magazine_data.comics:
         # 如果漫画名称不存在，新增
         existing_comic = db.query(magazine_comic_map).filter(
             magazine_comic_map.c.magazine_id == new_magazine.id,
@@ -95,7 +97,7 @@ def create_magazine(magazine_data: MagazineCreate, db: Session = Depends(get_db)
             db.execute(new_comic)
 
     db.commit()
-    return MagazineDetail(magazine=new_magazine, comics=magazine_data.comic_names, categories=[category])
+    return create_response(message="杂志创建成功")
 
 
 @router.put("/magazines/{magazine_id}")
@@ -137,7 +139,7 @@ def update_magazine(magazine_id: int, magazine_data: MagazineCreate, db: Session
     db.query(magazine_comic_map).filter(magazine_comic_map.c.magazine_id == magazine.id).delete()
 
     # 重新插入漫画名称
-    for comic_name in magazine_data.comic_names:
+    for comic_name in magazine_data.comics:
         new_comic = magazine_comic_map.insert().values(
             magazine_id=magazine.id,
             comic_name=comic_name
@@ -145,7 +147,7 @@ def update_magazine(magazine_id: int, magazine_data: MagazineCreate, db: Session
         db.execute(new_comic)
 
     db.commit()
-    return MagazineDetail(magazine=magazine, comics=magazine_data.comic_names, categories=[category])
+    return create_response(message="杂志更改成功")
 
 
 @router.delete("/magazines/{magazine_id}")
@@ -169,4 +171,4 @@ def delete_magazine(magazine_id: int, db: Session = Depends(get_db)):
     db.delete(magazine)
     db.commit()
 
-    return {"detail": "杂志已删除"}
+    return create_response(message="杂志删除成功")
