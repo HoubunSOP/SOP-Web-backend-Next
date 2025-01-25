@@ -1,17 +1,16 @@
 from datetime import datetime, timedelta
-from typing import List
 
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+
+from database import get_db
+from models.article import Article
 from models.category import Category
 from models.comic import Comic, ComicAuthor
 from models.magazine import Magazine
 from schemas.calendar import ComicCalendarItem
-from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.orm import Session
-from models.article import Article
-from schemas.article import ArticleRecommendationItem
-from database import get_db
-from tests.crawler.cherry_comic import to_comic, to_mz
-
+from schemas.comic import NewComicsDetail
+from tests.crawler.cherry_comic import to_mz
 from utils.response import create_response
 
 router = APIRouter()
@@ -30,7 +29,7 @@ def get_comics_calendar(db: Session = Depends(get_db)):
     comics_query = db.query(Comic).filter(
         Comic.date >= start_date,
         Comic.date <= end_date
-    ).all()
+    ).order_by(Comic.date.desc()).all()
 
     # 返回漫画信息和是否已经发售（isComplete）
     comics_result = []
@@ -48,6 +47,30 @@ def get_comics_calendar(db: Session = Depends(get_db)):
 
     return create_response(data=comics_result)
 
+
+@router.get("/new_comics")
+def get_new_comics(
+        limit: int = Query(20, le=100, ge=1, description="输出数量(默认20)"),
+        db: Session = Depends(get_db)
+):
+    # 查询正负90天内发售的漫画
+    comics_query = db.query(Comic).order_by(Comic.date.desc()).limit(limit).all()
+
+    # 返回漫画信息和是否已经发售（isComplete）
+    comics_result = []
+    for comic in comics_query:
+        name = f"{comic.name} 第{comic.volume}卷"
+        comics_result.append(NewComicsDetail(
+            id=comic.id,
+            name=name,
+            original_name=comic.original_name,
+            date=comic.date,
+            cover=comic.cover,
+        ))
+
+    return create_response(data=comics_result)
+
+
 @router.get("/recommended")
 def get_recommended_articles(
         limit: int = Query(5, le=100, ge=1, description="推荐文章输出数量(默认5)"),
@@ -60,6 +83,7 @@ def get_recommended_articles(
         raise HTTPException(status_code=404, detail="没有推荐文章")
 
     return create_response(data=recommended_articles)
+
 
 @router.get("/counts")
 def get_counts(db: Session = Depends(get_db)):
@@ -85,3 +109,8 @@ def get_counts(db: Session = Depends(get_db)):
         "magazines": magazine_count,
         "auto_comics": auto_comic_count
     })
+
+# 爬虫触发路由
+@router.get("/test")
+def testtestsetets(db: Session = Depends(get_db)):
+   to_mz(db)

@@ -60,3 +60,14 @@ class AutoComicCreate(BaseModel):
     isbn: Optional[int] = None
     cid: Optional[int] = None
     volume: Optional[int] = 1
+
+# 新发售漫画信息响应模型
+class NewComicsDetail(BaseModel):
+    id: int
+    name: str
+    original_name: Optional[str]  # 漫画原名可以为空
+    date: date
+    cover: str
+
+    class Config:
+        from_attributes = True

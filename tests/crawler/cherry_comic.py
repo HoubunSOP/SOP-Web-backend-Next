@@ -8,13 +8,12 @@ import pytz
 import requests
 from bs4 import BeautifulSoup
 from fastapi import Depends
-
 from sqlalchemy.orm import Session
 
 from database import get_db
 from models.category import Category
 from models.comic import ComicAuthor, Comic
-from models.magazine import magazine_category_map, magazine_comic_map,Magazine
+from models.magazine import magazine_category_map, magazine_comic_map, Magazine
 from schemas.comic import AutoComicCreate
 from schemas.magazine import MagazineCreate
 
@@ -181,9 +180,10 @@ def add_comicdb(comic: AutoComicCreate, db: Session = Depends(get_db)):
         db.refresh(new_comic)
         print("添加完成：" + str(comic.cid))
     except Exception as e:
-        print("添加失败："+ str(comic.cid) + "原因：" + str(e))
+        print("添加失败：" + str(comic.cid) + "原因：" + str(e))
         exit()
     return
+
 
 def add_magazine(magazine_data: MagazineCreate, db: Session = Depends(get_db)):
     """
@@ -241,8 +241,9 @@ def add_magazine(magazine_data: MagazineCreate, db: Session = Depends(get_db)):
 def to_comic(db):
     for url in range(1930, 1966):
         comic_data = extract_comic_info(str(url))
-        add_comicdb(comic_data,db)
+        add_comicdb(comic_data, db)
     return 'ok'
+
 
 def extract_mz_info(url):
     response = requests.get('https://krr.cherry-takuan.org/magazine_detail/?mid=' + str(url))
@@ -254,8 +255,10 @@ def extract_mz_info(url):
     comic_detail = comic_detail.find('p')
     for br in comic_detail.find_all('br'):
         br.decompose()
-    comic_description = "\n".join(str(content) for content in comic_detail.contents).replace("<strong>", "**").replace(
+    comic_description = "\n\n".join(str(content) for content in comic_detail.contents).replace("<strong>",
+                                                                                               "**").replace(
         "</strong>", "**")
+
     comic_description = comic_description
     # 找到所有的行
     rows = soup.find("div", class_="detail_table").find_all('tr')
@@ -273,14 +276,13 @@ def extract_mz_info(url):
     title = soup.find('title').text
     match = title.split("-")
     # 提取匹配到的组
-    title = match[0]  # 文字部分
+    title = match[0].replace('\n', '')  # 文字部分
     mdate = match[1]  # 数字部分
 
     match = mdate.split("/")
-    mmu = match[0]+'年'+match[1] + '月号'
+    mmu = match[0] + '年' + match[1] + '月号'
     pdate = datetime.strptime(mdate, "%Y/%m")
-    title = title + ' ' + mmu
-    link = 'http://www.dokidokivisual.com/magazine/carat/book/index.php?mid='+str(url)
+    link = 'http://www.dokidokivisual.com/magazine/carat/book/index.php?mid=' + str(url)
 
     if title == 'まんがタイムきらら':
         category_id = 7
@@ -292,16 +294,19 @@ def extract_mz_info(url):
         category_id = 10
     else:
         category_id = 11
+    title = title + ' ' + mmu
     data = MagazineCreate(
         name=title,
-        publish_date = pdate,
-        cover = img_src,
+        publish_date=pdate,
+        cover=img_src,
         intro=comic_description,
         link=link,
         comics=titles,
         category_id=category_id
     )
     return data
+
+
 def to_mz(db):
-    for qwqid in range(924,993):
-        add_magazine(extract_mz_info(qwqid),db)
+    for qwqid in range(866, 993):
+        add_magazine(extract_mz_info(qwqid), db)

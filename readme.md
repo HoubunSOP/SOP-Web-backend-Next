@@ -42,7 +42,7 @@ CREATE TABLE users (
   SET NULL
 );
 -- 创建 articles 表
-CREATE TABLE articles (
+    CREATE TABLE articles (
   id INT NOT NULL AUTO_INCREMENT COMMENT '文章唯一标识',
   title VARCHAR(255) NOT NULL COMMENT '文章标题',
   date DATE NOT NULL COMMENT '文章发布日期',

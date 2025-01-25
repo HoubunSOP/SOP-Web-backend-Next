@@ -45,7 +45,10 @@ def list_resources(
     if category_id is not None:
         # 分类筛选
         query = query.filter(category_map.c.category_id == category_id)
-    query = query.order_by(model.date.desc())
+    if resource_type != "magazines":
+        query = query.order_by(model.date.desc())
+    else:
+        query = query.order_by(model.publish_date.desc())
     # 分页逻辑
     total_count = query.count()
     total_pages = (total_count + limit - 1) // limit
