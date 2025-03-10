@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7827c13-e8ce-419d-b43d-fcfe4bde55e2" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SOP-Web-backend-Next.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.sample" beforeDir="false" afterPath="$PROJECT_DIR$/.env.sample" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/article/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/category/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/comic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mangazine/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/settings/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user/__init__.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,43 +46,69 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;FastAPI.未命名.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP 请求.test_main | #1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cherry_comic.executor&quot;: &quot;Run&quot;,
-    &quot;Python.index.executor&quot;: &quot;Run&quot;,
-    &quot;Python.permission_test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/misaka10843/Documents/GitHub/SOP-Web-backend-Next&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "FastAPI.未命名.executor": "Run",
+    "HTTP 请求.test_main | #1.executor": "Run",
+    "Python.auth (1).executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.cherry_comic.executor": "Run",
+    "Python.index.executor": "Run",
+    "Python.permission_test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/misaka10843/Documents/Github/SOP-Web-backend-Next",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\misaka10843\Documents\Github\SOP-Web-backend-Next" />
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\misaka10843\Documents\GitHub\SOP-Web-backend-Next" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.auth">
+  <component name="RunManager" selected="Python.auth (1)">
     <configuration name="test_main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" runType="运行单个请求">
+      <method v="2" />
+    </configuration>
+    <configuration name="auth (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP-Web-backend-Next" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/auth.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="auth" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -115,12 +150,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="HTTP 请求.test_main | #1" />
-      <item itemvalue="Python.auth" />
       <item itemvalue="FastAPI.未命名" />
+      <item itemvalue="HTTP 请求.test_main | #1" />
+      <item itemvalue="Python.auth (1)" />
+      <item itemvalue="Python.auth" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.auth (1)" />
         <item itemvalue="Python.auth" />
         <item itemvalue="HTTP 请求.test_main | #1" />
       </list>
@@ -177,7 +214,7 @@
       <workItem from="1733189136821" duration="2529000" />
       <workItem from="1736330137761" duration="47000" />
       <workItem from="1739761465696" duration="428000" />
-      <workItem from="1740206845021" duration="190000" />
+      <workItem from="1740206845021" duration="5661000" />
     </task>
     <servers />
   </component>
@@ -187,6 +224,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$cherry_comic.coverage" NAME="cherry_comic 覆盖结果" MODIFIED="1732589856387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/crawler" />
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$.coverage" NAME="未命名 覆盖结果" MODIFIED="1733117978315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$auth__1_.coverage" NAME="auth (1) 覆盖结果" MODIFIED="1740207798596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$permission_test.coverage" NAME="permission_test 覆盖结果" MODIFIED="1731927253774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$index.coverage" NAME="index 覆盖结果" MODIFIED="1732589149624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/routers" />
     <SUITE FILE_PATH="coverage/SOP_Web_backend_Next$auth.coverage" NAME="auth 覆盖结果" MODIFIED="1739761861042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />

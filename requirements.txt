@@ -13,4 +13,4 @@ starlette~=0.41.0
 bcrypt
 pycryptodome~=3.21.0
 fastapi_jwt
-python-jose
+authlib
