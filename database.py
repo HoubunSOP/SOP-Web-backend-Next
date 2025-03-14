@@ -43,7 +43,7 @@ def initialize_db(db):
     """
     从 install.sql 文件导入 SQL 语句并执行
     """
-    install_sql_path = '../install.sql'
+    install_sql_path = './install.sql'
 
     if os.path.exists(install_sql_path):
         with open(install_sql_path, 'r', encoding='utf-8') as file:
