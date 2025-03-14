@@ -10,7 +10,7 @@ from models.comic import Comic, ComicAuthor
 from models.magazine import Magazine
 from schemas.calendar import ComicCalendarItem
 from schemas.comic import NewComicsDetail
-from tests.crawler.cherry_comic import to_mz
+from tests.crawler.cherry_comic import to_mz, to_comic
 from utils.response import create_response
 
 router = APIRouter()
@@ -110,7 +110,11 @@ def get_counts(db: Session = Depends(get_db)):
         "auto_comics": auto_comic_count
     })
 
+
 # 爬虫触发路由
 @router.get("/crawler")
-def crawler(db: Session = Depends(get_db)):
-   to_mz(db)
+def crawler(is_comic: bool = Query(False, description="是否爬取漫画"), db: Session = Depends(get_db)):
+    if is_comic:
+        to_comic(db)
+    else:
+        to_mz(db)
