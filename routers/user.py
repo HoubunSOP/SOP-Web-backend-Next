@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Depends, Query, Security
 from fastapi_jwt import JwtAuthorizationCredentials
-from fastapi_login.exceptions import InvalidCredentialsException
 from sqlalchemy.orm import Session
-
 from database import get_db
 from models.user import User
 from schemas.user import UserLogin, UserCreate
@@ -19,12 +17,12 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
     # 获取用户信息
     user = db.query(User).filter(User.username == data.username).first()
     if not user:
-        raise InvalidCredentialsException
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="无指定用户")
     if data.aes:
         data.password = decrypt(data.password, data.iv)
     # 验证密码
     if not verify_password(data.password, user.password):
-        raise InvalidCredentialsException
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="用户密码错误")
 
     # 创建 Token
     access_token = ACCESS_SECURITY.create_access_token(
@@ -69,7 +67,7 @@ def update_user(user: UserCreate, db: Session = Depends(get_db),
     # 获取当前用户
     db_user = db.query(User).filter(User.id == user_id).first()
     if not db_user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="未找到指定用户")
 
     # 只允许修改头像和简介，不允许修改权限
     db_user.username = user.username

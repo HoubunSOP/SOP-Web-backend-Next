@@ -1,12 +1,12 @@
 import os
 
 from sqlalchemy import create_engine, text
-from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
+
 from config import DATABASE_ADDRESS, DATABASE_BASENAME, DATABASE_USER, DATABASE_PASSWORD, DATABASE_PROT, DATABASE_TYPE
 
 if DATABASE_TYPE == "sqlite":
-    DATABASE_URL = f"database/{DATABASE_BASENAME}.db"
+    DATABASE_URL = f"sqlite:///{os.path.dirname(os.path.abspath(__file__))}/database/{DATABASE_BASENAME}.db"
 elif DATABASE_TYPE == "mysql":
     DATABASE_URL = f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_ADDRESS}:{DATABASE_PROT}/{DATABASE_BASENAME}"
 else:
@@ -31,11 +31,11 @@ def check_and_initialize_db(db):
     检查数据库是否初始化，如果没有，执行安装 SQL 脚本
     """
     try:
-        # 尝试查询某个表或某个已知的初始化标志
-        result = db.execute("SELECT 1 FROM some_table LIMIT 1;")  # 你可以替换为你想查询的表或者条件
+        # 尝试查询表
+        result = db.execute("SELECT 1 FROM comics LIMIT 1;")  # 你可以替换为你想查询的表或者条件
         # 如果表存在，表示数据库已经初始化
         return True
-    except OperationalError:  # 如果数据库不存在该表或其他查询错误，说明未初始化
+    except Exception:  # 如果数据库不存在该表或其他查询错误，说明未初始化
         return False
 
 
@@ -43,7 +43,10 @@ def initialize_db(db):
     """
     从 install.sql 文件导入 SQL 语句并执行
     """
-    install_sql_path = './install.sql'
+    if DATABASE_TYPE == "sqlite":
+        install_sql_path = './database/install_sqlite.sql'
+    else:
+        install_sql_path = './database/install.sql'
 
     if os.path.exists(install_sql_path):
         with open(install_sql_path, 'r', encoding='utf-8') as file:

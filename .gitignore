@@ -242,3 +242,5 @@ fabric.properties
 *.temp.*
 
 **/settings.local.yml
+
+*.db

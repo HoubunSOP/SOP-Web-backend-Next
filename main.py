@@ -1,8 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+from database import get_db, check_and_initialize_db, initialize_db
 from routers import list, article, comic, magazine, category, search, index, user
 from utils.response import http_exception_handler, generic_exception_handler
 
+# 检查数据库
+db = next(get_db())
+if not check_and_initialize_db(db):
+    initialize_db(db)
 app = FastAPI()
 # 注册异常处理器
 app.add_exception_handler(HTTPException, http_exception_handler)

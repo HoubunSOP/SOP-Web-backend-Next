@@ -12,5 +12,4 @@ passlib~=1.7.4
 starlette~=0.41.0
 bcrypt
 pycryptodome~=3.21.0
-fastapi_jwt
-authlib
+fastapi-jwt[authlib]

@@ -24,6 +24,9 @@ def list_resources(
 ):
     """
     通用资源列表接口，支持分页与分类筛选。
+    :param category_id: 每页条数
+    :param page: 页码
+    :param limit: 分类ID（可选）
     :param resource_type: 资源类型 ('comics', 'articles', 'magazines')
     """
     # 模型与Schema映射

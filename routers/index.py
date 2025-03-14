@@ -111,6 +111,6 @@ def get_counts(db: Session = Depends(get_db)):
     })
 
 # 爬虫触发路由
-@router.get("/test")
-def testtestsetets(db: Session = Depends(get_db)):
+@router.get("/crawler")
+def crawler(db: Session = Depends(get_db)):
    to_mz(db)
