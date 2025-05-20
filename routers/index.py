@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from database import get_db
+from utils.database import get_db
 from models.article import Article
 from models.category import Category
 from models.comic import Comic, ComicAuthor

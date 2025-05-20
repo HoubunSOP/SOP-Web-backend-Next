@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from database import get_db
+from utils.database import get_db
 from models.category import Category
 from models.comic import Comic, ComicAuthor, comic_category_map
 from schemas.comic import ComicCreate

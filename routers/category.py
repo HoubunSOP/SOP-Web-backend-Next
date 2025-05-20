@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Query, HTTPException, Depends
 from sqlalchemy.orm import Session
-from database import get_db
+from utils.database import get_db
 from models.category import Category, CategoryType
 from models.comic import comic_category_map, Comic
 from models.magazine import magazine_category_map, Magazine

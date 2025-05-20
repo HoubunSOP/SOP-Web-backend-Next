@@ -1,11 +1,25 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import get_db, check_and_initialize_db, initialize_db
 from routers import list, article, comic, magazine, category, search, index, user
+from utils.meiliclient import init_indices
 from utils.response import http_exception_handler, generic_exception_handler
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # start
+    try:
+        await init_indices()
+    except Exception as e:
+        print(f'初始化失败：{e}')
+    yield
+    # shutdown
+
+
+app = FastAPI(lifespan=lifespan)
 # 注册异常处理器
 app.add_exception_handler(HTTPException, http_exception_handler)
 app.add_exception_handler(Exception, generic_exception_handler)

@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Query, HTTPException, Depends
+from fastapi import APIRouter, Query, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
-from database import get_db
+from utils.database import get_db
 from models.article import Article
 from models.comic import Comic, ComicAuthor
 from models.magazine import Magazine

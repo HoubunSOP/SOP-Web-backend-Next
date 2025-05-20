@@ -44,9 +44,9 @@ def initialize_db(db):
     从 install.sql 文件导入 SQL 语句并执行
     """
     if DATABASE_TYPE == "sqlite":
-        install_sql_path = './database/install_sqlite.sql'
+        install_sql_path = '../database/install_sqlite.sql'
     else:
-        install_sql_path = './database/install.sql'
+        install_sql_path = '../database/install.sql'
 
     if os.path.exists(install_sql_path):
         with open(install_sql_path, 'r', encoding='utf-8') as file:

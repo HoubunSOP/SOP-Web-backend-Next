@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query, Security
 from fastapi_jwt import JwtAuthorizationCredentials
 from sqlalchemy.orm import Session
-from database import get_db
+from utils.database import get_db
 from models.user import User
 from schemas.user import UserLogin, UserCreate
 from utils.Permission import Permission

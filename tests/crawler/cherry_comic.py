@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from database import get_db
+from utils.database import get_db
 from models.category import Category
 from models.comic import ComicAuthor, Comic
 from models.magazine import magazine_category_map, magazine_comic_map, Magazine

@@ -1,15 +1,18 @@
 # 获取文章详情接口
+from datetime import time, datetime
+
 from fastapi import APIRouter, Depends, HTTPException, Security
 from fastapi_jwt import JwtAuthorizationCredentials
 from sqlalchemy.orm import Session
 
-from database import get_db
 from models.article import Article, article_category_map
 from models.category import Category
 from models.user import User
 from schemas.article import ArticleCreate
 from utils.MarkdownRenderer import MarkdownRenderer
 from utils.auth import ACCESS_SECURITY
+from utils.database import get_db
+from utils.meiliclient import meili_client
 from utils.response import create_response
 
 router = APIRouter()
@@ -90,6 +93,16 @@ def create_article(article: ArticleCreate, db: Session = Depends(get_db),
     db.commit()
     db.refresh(new_article)
 
+    documents = {
+        "id": new_article.id,
+        "title": new_article.title,
+        "date": datetime.combine(new_article.date, time.min).timestamp(),
+        "content": new_article.content,
+        "comic": new_article.comic or '',
+        "author_id": new_article.author_id,
+    }
+    meili_client.index('articles').add_documents([documents])
+
     return create_response(message="文章创建成功")
 
 
@@ -125,7 +138,15 @@ def update_article(article_id: int, article: ArticleCreate, db: Session = Depend
     # 提交更新
     db.commit()
     db.refresh(db_article)
-
+    documents = {
+        "id": db_article.id,
+        "title": db_article.title,
+        "date": datetime.combine(db_article.date, time.min).timestamp(),
+        "content": db_article.content,
+        "comic": db_article.comic or '',
+        "author_id": db_article.author_id,
+    }
+    meili_client.index('articles').update_documents([documents])
     return create_response(message="文章修改成功")
 
 
@@ -139,5 +160,6 @@ def delete_article(article_id: int, db: Session = Depends(get_db)):
     # 删除文章
     db.delete(db_article)
     db.commit()
+    meili_client.index('articles').delete_document(article_id)
 
     return create_response(message="文章删除成功")

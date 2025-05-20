@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from models.magazine import Magazine, magazine_category_map, magazine_comic_map
 from models.category import Category
-from database import get_db
+from utils.database import get_db
 from schemas.magazine import MagazineDetail, MagazineCreate
 
 from utils.MarkdownRenderer import MarkdownRenderer

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Query, HTTPException, Depends
 from sqlalchemy.orm import Session
-from database import get_db
+from utils.database import get_db
 from models.article import Article, article_category_map
 from models.category import Category
 from models.comic import Comic, comic_category_map

@@ -18,7 +18,7 @@ CREATE TABLE comics
     auto          BOOLEAN      NOT NULL DEFAULT FALSE COMMENT '是否为自动生成',
     volume        INT                   DEFAULT '1' COMMENT '卷数',
     isbn          BIGINT                DEFAULT NULL COMMENT 'ISBN码',
-    cid           INT                   DEFAULT NULL COMMENT '官方网站/第三方网站ID(爬虫用)',
+    url           VARCHAR(255)                   DEFAULT NULL COMMENT '官方网站/第三方网站链接(爬虫用)',
     PRIMARY KEY (id),
     FOREIGN KEY (author_id) REFERENCES comic_authors (id) ON DELETE CASCADE
 );
