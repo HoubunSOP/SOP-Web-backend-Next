@@ -77,6 +77,9 @@ def create_comic(comic: ComicCreate, db: Session = Depends(get_db)):
         intro=comic.intro,
         cover=comic.cover,
         auto=comic.auto,
+        isbn=comic.isbn,
+        volume=comic.volume,
+        cid=comic.cid,
     )
 
     # 关联分类
@@ -92,6 +95,7 @@ def create_comic(comic: ComicCreate, db: Session = Depends(get_db)):
 
 @router.put("/comics/{comic_id}")
 def update_comic(comic_id: int, comic: ComicCreate, db: Session = Depends(get_db)):
+    print(comic)
     # 查找漫画
     db_comic = db.query(Comic).filter(Comic.id == comic_id).first()
     if not db_comic:
@@ -104,6 +108,9 @@ def update_comic(comic_id: int, comic: ComicCreate, db: Session = Depends(get_db
     db_comic.intro = comic.intro
     db_comic.cover = comic.cover
     db_comic.auto = comic.auto
+    db_comic.isbn = comic.isbn,
+    db_comic.volume = comic.volume,
+    db_comic.cid = comic.cid,
 
     # 查找或创建作者
     author = db.query(ComicAuthor).filter(ComicAuthor.name == comic.author_name).first()
@@ -129,6 +136,7 @@ def update_comic(comic_id: int, comic: ComicCreate, db: Session = Depends(get_db
     # 提交更新
     db.commit()
     db.refresh(db_comic)
+    print(db_comic)
 
     return create_response(message="漫画更新成功")
 

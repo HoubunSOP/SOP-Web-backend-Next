@@ -25,7 +25,7 @@ class Comic(Base):
     cover = Column(String(255), nullable=False, comment="封面图片文件名")
     auto = Column(Boolean, default=False, nullable=False, comment="是否为自动生成")
     isbn = Column(Integer, nullable=True, comment="ISBN码")
-    cid = Column(Integer, nullable=True, comment="官方网站/第三方网站ID(爬虫用)")
+    cid = Column(String(255), nullable=True, comment="官方网站/第三方网站ID(爬虫用)")
     volume = Column(Integer, nullable=True, comment="卷数")
 
     author = relationship("ComicAuthor", back_populates="comics")
