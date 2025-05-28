@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import get_db, check_and_initialize_db, initialize_db
 from routers import list, article, comic, magazine, category, search, index, user
 from utils.response import http_exception_handler, generic_exception_handler
 
@@ -27,6 +26,7 @@ origins = [
     "http://fwgxt.top",
     "http://localhost",
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://localhost:3001",
 ]
